@@ -64,7 +64,9 @@ def WIN2(s):
     return False
     
 def LOSS12(s):
-    if (WIN2(s + 1) or WIN2(s + 4) or WIN2(s * 2)) and (WIN1(s + 1) or WIN1(s + 4) or WIN2(s * 2)):
+    if (WIN1(s + 1) or WIN2(s + 1)) and (WIN1(s + 4) or WIN2(s + 4)) and (WIN1(s * 2) or WIN2(s * 2)) and \
+    (WIN1(s + 1) or WIN1(s + 4) or WIN1(s * 2)) and \
+    (WIN2(s + 1) or WIN2(s + 4) or WIN2(s * 2)):
         return True
     return False
     
