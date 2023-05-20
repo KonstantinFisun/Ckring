@@ -1,0 +1,41 @@
+# 2 кучи
+# 19 задание
+# h - количество камней в первой куче
+# s - количество камней во второй куче
+# c - текущий ход
+def play19_2(h, s, c):
+    global win # Глобальная переменная 
+    if s + h >= 86 and c == 2: # Если сумма в обоих кучах больше заданного и при этом ход перешел к Вани, то выиграли
+        return True
+    elif s + h < 86 and c == 2: # Если сумма в обоих кучах меньше заданного и при этом ход перешел к Вани, то проиграли
+        return False
+    return play19_2(h + 1 , s, c + 1) or play19_2(h, s + 1, c + 1) or play19_2(h * 2, s, c + 1) or play19_2(h, s * 2, c + 1)
+
+def play20_2(h, s, c):
+    global win # Глобальная переменная 
+    if s + h >= 86 and c == 3: # Если сумма в обоих кучах больше заданного и при этом ход перешел к Пети 2, то выиграли
+        return True
+    elif (s + h < 86 and c == 3) or s + h >= 86: # Если сумма в обоих кучах меньше заданного и при этом ход перешел к Пети 2, то проиграли, или больше, но ход не тот
+        return False
+    # Если ход Пети
+    elif c % 2 == 0:
+        return play20_2(h + 1 , s, c + 1) or play20_2(h, s + 1, c + 1) or play20_2(h * 2, s, c + 1) or play20_2(h, s * 2, c + 1)
+    return play20_2(h + 1 , s, c + 1) and play20_2(h, s + 1, c + 1) and play20_2(h * 2, s, c + 1) and play20_2(h, s * 2, c + 1)
+
+def play21_2(h, s, c):
+    global win
+    if s + h >= 86 and (c == 4 or c == 2):
+        return True
+    elif (s + h < 86 and c == 4) or s + h >= 86:
+        return False
+    elif c % 2 == 1:
+        return play21_2(h, s + 1, c + 1) or play21_2(h, s * 4, c + 1) or play21_2(h + 1, s, c + 1) or play21_2(h * 4, s, c + 1)
+    return play21_2(h, s + 1, c + 1) and play21_2(h, s * 4, c + 1) and play21_2(h + 1, s, c + 1) and play21_2(h * 4, s, c + 1)
+    
+h = 14
+# for s in range(1,72):
+#     if(play19_2(14, s, 0)):
+#         print(s)
+for s in range(1,72):
+     if(play20_2(14, s, 0)):
+         print(s)
