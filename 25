@@ -1,0 +1,23 @@
+num = 452022 # Начинаем с этого
+count = 0 # Счетчик
+# Цикл пока
+while True:
+    min = 0
+    max = 0
+    for j in range(2, num):
+        if(num % j == 0): # Нашли делитель
+            min = j
+            break
+    for j in range(num-1, 2, -1):
+        if(num % j == 0): # Нашли делитель
+            max = j
+            break 
+    
+    M = max + min
+    if(max != min):
+        if(M % 7 == 3):
+            count += 1
+            print(num, ' ', M);
+    if count == 5:
+        break
+    num += 1
